@@ -5,8 +5,17 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Fundamentals from './pages/fundamentals';
-function App() {
+
+// This site has 3 pages, all of which are rendered
+// dynamically in the browser (not server rendered).
+//
+// Although the page does not ever refresh, notice how
+// React Router keeps the URL up to date as you navigate
+// through the site. This preserves the browser history,
+// making sure things like the back button and bookmarks
+// work properly.
+
+export default function BasicExample() {
   return (
     <Router>
       <div>
@@ -15,7 +24,7 @@ function App() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/fundamentals">Fundamentals</Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
             <Link to="/dashboard">Dashboard</Link>
@@ -35,8 +44,8 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/fundamentals">
-            <Fundamentals />
+          <Route path="/about">
+            <About />
           </Route>
           <Route path="/dashboard">
             <Dashboard />
@@ -47,6 +56,9 @@ function App() {
   );
 }
 
+// You can think of these components as "pages"
+// in your app.
+
 function Home() {
   return (
     <div>
@@ -55,7 +67,13 @@ function Home() {
   );
 }
 
-
+function About() {
+  return (
+    <div>
+      <h2>About</h2>
+    </div>
+  );
+}
 
 function Dashboard() {
   return (
@@ -64,7 +82,3 @@ function Dashboard() {
     </div>
   );
 }
-
-
-
-export default App;
